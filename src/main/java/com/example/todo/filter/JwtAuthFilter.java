@@ -52,8 +52,7 @@ public class JwtAuthFilter extends OncePerRequestFilter {
                 .anyMatch(pattern -> pathMatcher.match(pattern, requestURI));
         log.info("isPermitAllUrl: {}", isPermitAllUrl);
 
-        if (isPermitAllUrl) {
-
+        if (isPermitAllUrl && !requestURI.contains("load-profile") && !requestURI.contains("logout")) {
             filterChain.doFilter(request, response);
             return;
         }
