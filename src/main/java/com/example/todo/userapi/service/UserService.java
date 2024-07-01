@@ -137,6 +137,9 @@ public class UserService {
         String accessToken = tokenProvider.createAccessKey(user);
         String refreshToken = tokenProvider.createRefreshKey(user);
 
+        log.info("access_token: {}", accessToken);
+        log.info("refresh_token: {}", refreshToken);
+
         Map<String, String> token = new HashMap<>();
         token.put("access_token", accessToken);
         token.put("refresh_token", refreshToken);
